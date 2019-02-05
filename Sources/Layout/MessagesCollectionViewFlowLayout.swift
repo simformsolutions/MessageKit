@@ -193,6 +193,11 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     public func setMessageOutgoingAvatarPosition(_ newPosition: AvatarPosition) {
         messageSizeCalculators().forEach { $0.outgoingAvatarPosition = newPosition }
     }
+
+    /// Set `avatarLeadingTrailingPadding` of all `MessageSizeCalculator`s
+    public func setAvatarLeadingTrailingPadding(_ newPadding: CGFloat) {
+        messageSizeCalculators().forEach { $0.avatarLeadingTrailingPadding = newPadding }
+    }
     
     /// Set `incomingMessagePadding` of all `MessageSizeCalculator`s
     public func setMessageIncomingMessagePadding(_ newPadding: UIEdgeInsets) {
@@ -212,6 +217,16 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     /// Set `outgoingCellTopLabelAlignment` of all `MessageSizeCalculator`s
     public func setMessageOutgoingCellTopLabelAlignment(_ newAlignment: LabelAlignment) {
         messageSizeCalculators().forEach { $0.outgoingCellTopLabelAlignment = newAlignment }
+    }
+    
+    /// Set `incomingCellBottomLabelAlignment` of all `MessageSizeCalculator`s
+    public func setMessageIncomingCellBottomLabelAlignment(_ newAlignment: LabelAlignment) {
+        messageSizeCalculators().forEach { $0.incomingCellBottomLabelAlignment = newAlignment }
+    }
+    
+    /// Set `outgoingCellBottomLabelAlignment` of all `MessageSizeCalculator`s
+    public func setMessageOutgoingCellBottomLabelAlignment(_ newAlignment: LabelAlignment) {
+        messageSizeCalculators().forEach { $0.outgoingCellBottomLabelAlignment = newAlignment }
     }
     
     /// Set `incomingMessageTopLabelAlignment` of all `MessageSizeCalculator`s
