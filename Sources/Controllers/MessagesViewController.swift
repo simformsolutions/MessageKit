@@ -145,24 +145,11 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
         messagesCollectionView.dataSource = self
     }
 
-    private func setupSubviews() {
-        view.addSubview(messagesCollectionView)
+    open func setupSubviews() {
     }
-
-    private func setupConstraints() {
-        messagesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    
+    open func setupConstraints() {
         
-        let top = messagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: topLayoutGuide.length)
-        let bottom = messagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        if #available(iOS 11.0, *) {
-            let leading = messagesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-            let trailing = messagesCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-            NSLayoutConstraint.activate([top, bottom, trailing, leading])
-        } else {
-            let leading = messagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-            let trailing = messagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            NSLayoutConstraint.activate([top, bottom, trailing, leading])
-        }
     }
 
     // MARK: - UICollectionViewDataSource
