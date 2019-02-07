@@ -88,11 +88,16 @@ open class MessagesCollectionView: UICollectionView {
 
     public func scrollToBottom(animated: Bool = false) {
         let collectionViewContentHeight = collectionViewLayout.collectionViewContentSize.height
-        performBatchUpdates({
-            self.reloadData()
-        }, completion: { (_ ) in
-            self.scrollRectToVisible(CGRect(0.0, collectionViewContentHeight - 1.0, 1.0, 1.0), animated: animated)
-        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1) { [weak self] in
+            guard let uSelf = self else {
+                return
+            }
+            uSelf.performBatchUpdates({
+                uSelf.reloadData()
+            }, completion: { (_ ) in
+                uSelf.scrollRectToVisible(CGRect(0.0, collectionViewContentHeight - 1.0, 1.0, 1.0), animated: animated)
+            })
+        }
     }
     
     public func reloadDataAndKeepOffset() {
